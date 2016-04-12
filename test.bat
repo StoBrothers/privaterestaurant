@@ -1,4 +1,4 @@
-rem Authentification in system as admin
+rem Authentification in system as Admin user
 curl http://localhost:8080/login -d logonName=admin -d password=123 -d remember-me=on -c coks.txt
 rem GET all restaraunnts
 curl http://localhost:8080/rest/restaurant/ -G -b coks.txt 
@@ -20,13 +20,13 @@ rem Get menu of dishe GET by restaurantId and workdateId
 curl http://localhost:8080/dishe/1/1/ -G -b coks.txt
 rem logout
 curl http://localhost:8080/logout -b coks.txt
-rem POST Voting process from annonym user with post authentification
+rem POST Voting process from annonym user with use post authentification 
 curl http://localhost:8080/rest/voting/1/1/ -H "Content-Type: application/json" -X POST -d {\"logon\":\"admin\",\"password\":\"123\"} 
-rem POST Voting process from annonym user with post authentification
+rem POST Voting process from annonym user with use post authentification
 curl http://localhost:8080/rest/voting/2/2/ -H "Content-Type: application/json" -X POST -d {\"logon\":\"app1\",\"password\":\"123\"} 
-rem POST Voting process from annonym user with post authentification
+rem POST Voting process from annonym user with use post authentification
 curl http://localhost:8080/rest/voting/3/3/ -H "Content-Type: application/json" -X POST -d {\"logon\":\"app2\",\"password\":\"123\"} 
-rem Authentification in system as admin
-curl http://localhost:8080/login -d logonName=admin -d password=123 -d remember-me=on -c coks.txt
+rem Authentification in system as App user
+curl http://localhost:8080/login -d logonName=app1 -d password=123 -d remember-me=on -c coks.txt
 rem Check votes
-curl http://localhost:8080/rest/votes/ -G -b coks.txt 
+curl http://localhost:8080/rest/votes/ -G -b coks.txt
