@@ -7,7 +7,7 @@ Demo vote system.
 
 Requirements
 ------------
-Install Java
+Install Java 8.65 version
 http://www.oracle.com/ 
 
 Install Apache Maven 
@@ -115,4 +115,9 @@ curl http://localhost:8080/login -d logonName=app1 -d password=123 -d remember-m
 16. GET. Get votes information.
 curl http://localhost:8080/rest/votes/ -G -b coks.txt
 
+
 File example_out.txt contains result of execution test.bat.
+
+
+Entity uml diagramm in file entity_uml.jpg
+
