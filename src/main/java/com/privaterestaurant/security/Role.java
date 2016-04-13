@@ -33,7 +33,6 @@ public enum Role {
         Stream.concat(
             Permission.APP_COMMON.stream(),
             Arrays.asList(
-                Permission.VOTES_INFO,
                 Permission.VOTES_CREATE,
                 Permission.REF_MENU
             ).stream())
