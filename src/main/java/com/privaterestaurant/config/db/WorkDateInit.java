@@ -13,7 +13,7 @@ import com.privaterestaurant.domain.WorkDateRepository;
 /**
  * Calendar initialization with work dates (current date and previous and next days).
  * 
- *
+ * @author Sergey Stotskiy
  */
 @Component("workdates")
 @DependsOn({ "restaurants" })
@@ -37,6 +37,11 @@ public class WorkDateInit extends AbstractInit {
         create(nextDate);
     }
 
+    /**
+     * Create one WorkDate
+     * 
+     * @param curDate
+     */
     private void create(Date curDate) {
         WorkDate workDate = new WorkDate();
         workDate.setDate(curDate);

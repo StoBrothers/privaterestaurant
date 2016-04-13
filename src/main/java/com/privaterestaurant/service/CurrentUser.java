@@ -4,8 +4,8 @@ import java.util.Set;
 
 import org.springframework.security.core.authority.AuthorityUtils;
 
-import com.privaterestaurant.domain.Role;
 import com.privaterestaurant.domain.User;
+import com.privaterestaurant.security.Role;
 
 /**
  *  Wrapper for authenticated User.

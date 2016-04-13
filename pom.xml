@@ -9,7 +9,7 @@
 	<version>0.2.6-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>Private Restaurant Office</name>
+	<name>Private Restaurant </name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -100,73 +100,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<dependency>
-		  <groupId>com.itextpdf</groupId>
-		  <artifactId>itextpdf</artifactId>
-		  <version>5.5.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>2.2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.13</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml-schemas</artifactId>
-			<version>3.13</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>3.13</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-scratchpad</artifactId>
-			<version>3.13</version>
-		</dependency>
-
-
-
-
 		<!-- The JCR API -->
 		<dependency>
 			<groupId>javax.jcr</groupId>
 			<artifactId>jcr</artifactId>
 			<version>2.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>18.0</version>
-		</dependency>
-
-		<!-- test dependencies -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.scala-lang</groupId>
-			<artifactId>scala-library</artifactId>
-			<version>2.11.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.scala-lang</groupId>
-			<artifactId>scala-library</artifactId>
-			<version>2.11.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.neo4j</groupId>
-			<artifactId>neo4j-cypher-compiler-2.2</artifactId>
-			<version>2.2.5</version>
 		</dependency>
 	</dependencies>
 
@@ -189,30 +127,6 @@
 			</resource>
 		</resources>
 		<plugins>
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>**/*IT.java</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>integration-test</id>
-						<goals>
-							<goal>integration-test</goal>
-						</goals>
-						<configuration>
-							<includes>
-								<include>**/*IT.class</include>
-							</includes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>2.15</version>
@@ -242,90 +156,7 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
-				<version>0.12.3</version>
-				<configuration>
-					<schemaLanguage>WSDL</schemaLanguage>
-					<generateDirectory>${basedir}/src/main/java</generateDirectory>
-					<generatePackage>com.privaterestaurant.integration.report1c.jaxb</generatePackage>
-					<schemas>
-						<schema>
-							<fileset>
-								<directory>${basedir}/src/main/resources/wsdl</directory>
-								<includes>
-									<include>svodapk.wsdl</include>
-								</includes>
-							</fileset>
-						</schema>
-					</schemas>
-					<episode>false</episode>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
-				<version>0.12.3</version>
-				<configuration>
-					<schemaLanguage>WSDL</schemaLanguage>
-					<generateDirectory>${basedir}/src/main/java</generateDirectory>
-					<generatePackage>com.privaterestaurant.integration.viis.jaxb</generatePackage>
-					<schemas>
-						<schema>
-							<url>http://37.26.234.140/ViisSoapService.asmx?WSDL</url>
-						</schema>
-					</schemas>
-					<episode>false</episode>
-				</configuration>
-			</plugin>
-			<!--plugin>
-				<groupId>pl.project13.maven</groupId>
-				<artifactId>git-commit-id-plugin</artifactId>
-				<version>2.2.0</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>revision</goal>
-						</goals>
-					</execution>
-				</executions>
-
-				<configuration>
-					<dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
-					<prefix>git</prefix>
-					<dateFormat>dd.MM.yyyy '@' HH:mm:ss z</dateFormat>
-					<dateFormatTimeZone>${user.timezone}</dateFormatTimeZone>
-					<verbose>false</verbose>
-					<generateGitPropertiesFile>true</generateGitPropertiesFile>
-					<generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
-					<format>properties</format>
-					<skipPoms>true</skipPoms>
-					<injectAllReactorProjects>false</injectAllReactorProjects>
-					<failOnNoGitDirectory>true</failOnNoGitDirectory>
-					<failOnUnableToExtractRepoInfo>true</failOnUnableToExtractRepoInfo>
-					<skip>false</skip>
-					<runOnlyOnce>false</runOnlyOnce>
-					<excludeProperties>
-					</excludeProperties>
-					<includeOnlyProperties>
-					</includeOnlyProperties>
-					<useNativeGit>false</useNativeGit>
-					<abbrevLength>7</abbrevLength>
-					<commitIdGenerationMode>flat</commitIdGenerationMode>
-					<gitDescribe>
-						<skip>false</skip>
-						<always>false</always>
-						<abbrev>7</abbrev>
-						<dirty>-dirty</dirty>
-						<match>*</match>
-						<forceLongFormat>false</forceLongFormat>
-					</gitDescribe>
-				</configuration>
-			</plugin-->
 		</plugins>
-
 	</build>
 
 	<profiles>
@@ -378,51 +209,8 @@
 			</build>
 			<dependencies>
 				<dependency>
-					<groupId>com.microsoft</groupId>
-					<artifactId>sqljdbc</artifactId>
-					<version>4.2</version>
-					<scope>system</scope>
-					<systemPath>${project.basedir}/lib/sqljdbc42.jar</systemPath>
-				</dependency>
-				<dependency>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-devtools</artifactId>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>test</id>
-			<dependencies>
-				<dependency>
-					<groupId>com.microsoft</groupId>
-					<artifactId>sqljdbc</artifactId>
-					<version>4.2</version>
-					<scope>system</scope>
-					<systemPath>${project.basedir}/lib/sqljdbc42.jar</systemPath>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>test2</id>
-			<dependencies>
-				<dependency>
-					<groupId>com.microsoft</groupId>
-					<artifactId>sqljdbc</artifactId>
-					<version>4.2</version>
-					<scope>system</scope>
-					<systemPath>${project.basedir}/lib/sqljdbc42.jar</systemPath>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>demo</id>
-			<dependencies>
-				<dependency>
-					<groupId>com.microsoft</groupId>
-					<artifactId>sqljdbc</artifactId>
-					<version>4.2</version>
-					<scope>system</scope>
-					<systemPath>${project.basedir}/lib/sqljdbc42.jar</systemPath>
 				</dependency>
 			</dependencies>
 		</profile>

@@ -1,6 +1,7 @@
 package com.privaterestaurant.controller.rest;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -83,7 +84,7 @@ public class UsersRestController {
      * Add new user.
      *
      * @param user
-     *             
+     * 
      * @return - operation status
      */
     @RequestMapping(value = "create/", method = RequestMethod.POST)
@@ -93,16 +94,16 @@ public class UsersRestController {
             userRepository.save(user);
             return true;
         } catch (DataIntegrityViolationException ex) {
-            return "User with this id existed in system";
+            return "User with this id is existing in DB";
         }
     }
 
     /**
-     * Get coded password. 
+     * Get coded password.
      *
      * @param password
      *            - pure password
-     * @return - encoded password  (hashPassword)
+     * @return - encoded password (hashPassword)
      */
     private String getHashPassword(String password) {
         String hashPassword = new BCryptPasswordEncoder().encode(password);

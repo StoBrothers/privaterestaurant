@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -37,13 +39,11 @@ import com.privaterestaurant.service.RestaurantService;
 import com.privaterestaurant.service.VoteService;
 import com.privaterestaurant.service.WorkDateService;
 import com.privaterestaurant.util.VoteParameter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Rest Controller for votes.
  * 
- * @author Sergey Stotskiy 
+ * @author Sergey Stotskiy
  *
  */
 @RestController
@@ -51,9 +51,9 @@ import org.slf4j.LoggerFactory;
 public class VotesController {
 
     private static final Logger logger = LoggerFactory.getLogger(VotesController.class);
-    
+
     @Autowired
-    VoteService<Vote> voteService;
+    VoteService voteService;
 
     @Autowired
     CurrentUserDetailsService currentUserDetailsService;
@@ -94,12 +94,12 @@ public class VotesController {
             currentUser = currentUserDetailsService
                 .loadUserByUsername(parameters.getLogon());
         } catch (UsernameNotFoundException uex) {
-            logger.info("User not loaded " +  uex.getMessage());
+            logger.info("User not loaded " + uex.getMessage());
             return HttpStatus.BAD_REQUEST;
         }
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        
+
         if (!passwordEncoder.matches(parameters.getPassword(),
             currentUser.getPassword())) {
             logger.info("Password incorrect");
@@ -121,11 +121,11 @@ public class VotesController {
 
         Optional<WorkDate> workDate = workdateService.getWorkDateById(workDateId);
 
-        if (!restaurant.isPresent()) { 
+        if (!restaurant.isPresent()) {
             logger.info("Restaurant is not found");
             return HttpStatus.BAD_REQUEST;
         }
-        if ( !workDate.isPresent()) {
+        if (!workDate.isPresent()) {
             logger.info("Workdate is not found");
             return HttpStatus.BAD_REQUEST;
         }
@@ -155,17 +155,16 @@ public class VotesController {
         responseMap.put("Restaurant", currentVote.getRestaurant().getName());
         return new VoteDTO(vote.get());
     }
-    
+
     @PreAuthorize("hasAuthority('VOTES_INFO')")
     @RequestMapping(value = "votes/", method = RequestMethod.GET)
     @ResponseBody
     public Object getAllVotes() {
         List<Vote> votes = voteService.findAllVotes();
         if (votes == null || votes.size() == 0) {
-            logger.info("Votes is not exist");
+            logger.info("Votes is not exist in DB");
             return null;
         }
-        
         List<VoteDTO> voteDTOs = new ArrayList<VoteDTO>();
         votes.forEach(u -> voteDTOs.add(new VoteDTO(u)));
         return voteDTOs;

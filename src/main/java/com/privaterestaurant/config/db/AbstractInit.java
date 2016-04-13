@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.privaterestaurant.service.ModuleService;
 
 /**
- * Abstract class for load data.  
+ * Abstract class for load data.
  * 
  * @author Sergey Stotskiy
  */

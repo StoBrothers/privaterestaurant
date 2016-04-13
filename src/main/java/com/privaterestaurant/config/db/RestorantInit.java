@@ -27,6 +27,11 @@ public class RestorantInit extends AbstractInit {
         create("BurgerKing");
     }
 
+    /**
+     * Create one restaurant
+     * 
+     * @param restaurantName
+     */
     private void create(String restaurantName) {
         Restaurant restaurant = new Restaurant();
         restaurant.setName(restaurantName);

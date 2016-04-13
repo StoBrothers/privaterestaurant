@@ -1,0 +1,65 @@
+
+C:\dev\test\privaterestaurant>rem Authentification in system as Admin user 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/login -d logonName=admin -d password=123 -d remember-me=on -c coks.txt 
+
+C:\dev\test\privaterestaurant>rem GET all restaraunnts 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/rest/restaurant/ -G -b coks.txt  
+[{"id":1,"name":"KFC"},{"id":2,"name":"McDonalds"},{"id":3,"name":"BurgerKing"}]
+C:\dev\test\privaterestaurant>rem Create Dishe with id 28 PUT restaurantId workdateId 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/dishe/1/1/ -H "Content-Type: application/json" -X PUT -d {\"name\":\"juice\",\"price\":11.4} -b coks.txt  
+{"id":29,"name":"juice","price":11.4,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13","handler":{},"hibernateLazyInitializer":{}}}
+C:\dev\test\privaterestaurant>rem GET all restaurants menu. It's all Dishes. 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/dishe/ -G -b coks.txt  
+[{"id":1,"name":"name1","price":1.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":2,"name":"name2","price":3.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":3,"name":"name3","price":6.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":4,"name":"name1","price":1.0,"restaurant":{"id":2,"name":"McDonalds"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":5,"name":"name2","price":3.0,"restaurant":{"id":2,"name":"McDonalds"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":6,"name":"name3","price":6.0,"restaurant":{"id":2,"name":"McDonalds"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":7,"name":"name1","price":1.0,"restaurant":{"id":3,"name":"BurgerKing"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":8,"name":"name2","price":3.0,"restaurant":{"id":3,"name":"BurgerKing"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":9,"name":"name3","price":6.0,"restaurant":{"id":3,"name":"BurgerKing"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":10,"name":"name1","price":1.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":2,"date":"2016-04-12"}},{"id":11,"name":"name2","price":3.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":2,"date":"2016-04-12"}},{"id":12,"name":"name3","price":6.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":2,"date":"2016-04-12"}},{"id":13,"name":"name1","price":1.0,"restaurant":{"id":2,"name":"McDonalds"},"workDate":{"id":2,"date":"2016-04-12"}},{"id":14,"name":"name2","price":3.0,"restaurant":{"id":2,"name":"McDonalds"},"workDate":{"id":2,"date":"2016-04-12"}},{"id":15,"name":"name3","price":6.0,"restaurant":{"id":2,"name":"McDonalds"},"workDate":{"id":2,"date":"2016-04-12"}},{"id":16,"name":"name1","price":1.0,"restaurant":{"id":3,"name":"BurgerKing"},"workDate":{"id":2,"date":"2016-04-12"}},{"id":17,"name":"name2","price":3.0,"restaurant":{"id":3,"name":"BurgerKing"},"workDate":{"id":2,"date":"2016-04-12"}},{"id":18,"name":"name3","price":6.0,"restaurant":{"id":3,"name":"BurgerKing"},"workDate":{"id":2,"date":"2016-04-12"}},{"id":19,"name":"name1","price":1.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":3,"date":"2016-04-14"}},{"id":20,"name":"name2","price":3.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":3,"date":"2016-04-14"}},{"id":21,"name":"name3","price":6.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":3,"date":"2016-04-14"}},{"id":22,"name":"name1","price":1.0,"restaurant":{"id":2,"name":"McDonalds"},"workDate":{"id":3,"date":"2016-04-14"}},{"id":23,"name":"name2","price":3.0,"restaurant":{"id":2,"name":"McDonalds"},"workDate":{"id":3,"date":"2016-04-14"}},{"id":24,"name":"name3","price":6.0,"restaurant":{"id":2,"name":"McDonalds"},"workDate":{"id":3,"date":"2016-04-14"}},{"id":25,"name":"name1","price":1.0,"restaurant":{"id":3,"name":"BurgerKing"},"workDate":{"id":3,"date":"2016-04-14"}},{"id":26,"name":"name2","price":3.0,"restaurant":{"id":3,"name":"BurgerKing"},"workDate":{"id":3,"date":"2016-04-14"}},{"id":27,"name":"name3","price":6.0,"restaurant":{"id":3,"name":"BurgerKing"},"workDate":{"id":3,"date":"2016-04-14"}},{"id":29,"name":"juice","price":11.4,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13"}}]
+C:\dev\test\privaterestaurant>rem Get Diche by Id 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/dishe/28/ -G -b coks.txt 
+{"currentUser":{"password":null,"username":"admin","authorities":[{"authority":"CABINET_ADMIN"},{"authority":"DISHE_CREATE"},{"authority":"DISHE_DELETE"},{"authority":"DISHE_UPDATE"},{"authority":"DISHE_VIEW"},{"authority":"RESTAURANT_VIEW"},{"authority":"VOTES_CREATE"},{"authority":"VOTES_INFO"}],"accountNonExpired":true,"accountNonLocked":true,"credentialsNonExpired":true,"enabled":true,"user":{"id":1,"logonName":"admin","passwordHash":"$2a$10$lGQ0FEvIVA/6mJor8rYK.eOoHmvi9lp84lnbMV1098cgL4agQNM/i","adminRules":true,"newPassword":null,"fullName":"admin","roles":["ADMIN"]},"id":1,"logonName":"admin","roles":["ADMIN"]},"message":"Dishe with id 28 not existed","url":"/dishe/28/","timestamp":1460574918292,"status":404}
+C:\dev\test\privaterestaurant>rem Update Dishe POST  
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/dishe/28/ -H "Content-Type: application/json" -X POST -d {\"name\":\"COKE\",\"price\":2.4} -b coks.txt  
+{"currentUser":{"password":null,"username":"admin","authorities":[{"authority":"CABINET_ADMIN"},{"authority":"DISHE_CREATE"},{"authority":"DISHE_DELETE"},{"authority":"DISHE_UPDATE"},{"authority":"DISHE_VIEW"},{"authority":"RESTAURANT_VIEW"},{"authority":"VOTES_CREATE"},{"authority":"VOTES_INFO"}],"accountNonExpired":true,"accountNonLocked":true,"credentialsNonExpired":true,"enabled":true,"user":{"id":1,"logonName":"admin","passwordHash":"$2a$10$lGQ0FEvIVA/6mJor8rYK.eOoHmvi9lp84lnbMV1098cgL4agQNM/i","adminRules":true,"newPassword":null,"fullName":"admin","roles":["ADMIN"]},"id":1,"logonName":"admin","roles":["ADMIN"]},"message":"Dishe with id 28 not existed","url":"/dishe/28/","timestamp":1460574918352,"status":404}
+C:\dev\test\privaterestaurant>rem Check updated value Diche by Id 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/dishe/28/ -G -b coks.txt 
+{"currentUser":{"password":null,"username":"admin","authorities":[{"authority":"CABINET_ADMIN"},{"authority":"DISHE_CREATE"},{"authority":"DISHE_DELETE"},{"authority":"DISHE_UPDATE"},{"authority":"DISHE_VIEW"},{"authority":"RESTAURANT_VIEW"},{"authority":"VOTES_CREATE"},{"authority":"VOTES_INFO"}],"accountNonExpired":true,"accountNonLocked":true,"credentialsNonExpired":true,"enabled":true,"user":{"id":1,"logonName":"admin","passwordHash":"$2a$10$lGQ0FEvIVA/6mJor8rYK.eOoHmvi9lp84lnbMV1098cgL4agQNM/i","adminRules":true,"newPassword":null,"fullName":"admin","roles":["ADMIN"]},"id":1,"logonName":"admin","roles":["ADMIN"]},"message":"Dishe with id 28 not existed","url":"/dishe/28/","timestamp":1460574918398,"status":404}
+C:\dev\test\privaterestaurant>rem Get menu of dishe GET by restaurantId and workdateId 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/dishe/1/1/ -G -b coks.txt 
+[{"id":1,"name":"name1","price":1.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":2,"name":"name2","price":3.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":3,"name":"name3","price":6.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":29,"name":"juice","price":11.4,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13"}}]
+C:\dev\test\privaterestaurant>rem Delete Dishe DELETE 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/dishe/28/ -H "Content-Type: application/json" -X  DELETE -b coks.txt 
+{"currentUser":{"password":null,"username":"admin","authorities":[{"authority":"CABINET_ADMIN"},{"authority":"DISHE_CREATE"},{"authority":"DISHE_DELETE"},{"authority":"DISHE_UPDATE"},{"authority":"DISHE_VIEW"},{"authority":"RESTAURANT_VIEW"},{"authority":"VOTES_CREATE"},{"authority":"VOTES_INFO"}],"accountNonExpired":true,"accountNonLocked":true,"credentialsNonExpired":true,"enabled":true,"user":{"id":1,"logonName":"admin","passwordHash":"$2a$10$lGQ0FEvIVA/6mJor8rYK.eOoHmvi9lp84lnbMV1098cgL4agQNM/i","adminRules":true,"newPassword":null,"fullName":"admin","roles":["ADMIN"]},"id":1,"logonName":"admin","roles":["ADMIN"]},"message":"No class com.privaterestaurant.domain.Dishe entity with id 28 exists!","url":"/dishe/28/","timestamp":1460574918549,"status":500}
+C:\dev\test\privaterestaurant>rem Get menu of dishe GET by restaurantId and workdateId 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/dishe/1/1/ -G -b coks.txt 
+[{"id":1,"name":"name1","price":1.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":2,"name":"name2","price":3.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":3,"name":"name3","price":6.0,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13"}},{"id":29,"name":"juice","price":11.4,"restaurant":{"id":1,"name":"KFC"},"workDate":{"id":1,"date":"2016-04-13"}}]
+C:\dev\test\privaterestaurant>rem logout 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/logout -b coks.txt 
+
+C:\dev\test\privaterestaurant>rem POST Voting process from annonym user with use post authentification  
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/rest/voting/1/1/ -H "Content-Type: application/json" -X POST -d {\"logon\":\"admin\",\"password\":\"123\"}  
+"OK"
+C:\dev\test\privaterestaurant>rem POST Voting process from annonym user with use post authentification 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/rest/voting/2/2/ -H "Content-Type: application/json" -X POST -d {\"logon\":\"app1\",\"password\":\"123\"}  
+"BAD_REQUEST"
+C:\dev\test\privaterestaurant>rem POST Voting process from annonym user with use post authentification 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/rest/voting/3/3/ -H "Content-Type: application/json" -X POST -d {\"logon\":\"app2\",\"password\":\"123\"}  
+"OK"
+C:\dev\test\privaterestaurant>rem Authentification in system as App user 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/login -d logonName=app1 -d password=123 -d remember-me=on -c coks.txt 
+
+C:\dev\test\privaterestaurant>rem Check votes 
+
+C:\dev\test\privaterestaurant>curl http://localhost:8080/rest/votes/ -G -b coks.txt 
+[{"id":1,"userName":"admin","restaurantName":"KFC","workDate":"2016-04-13"},{"id":2,"userName":"app2","restaurantName":"BurgerKing","workDate":"2016-04-14"}]

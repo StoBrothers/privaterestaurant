@@ -13,12 +13,12 @@ import javax.persistence.UniqueConstraint;
 
 /**
  * User votes per restaurant and date.
- *
+ * 
+ * @author Sergey Stotskiy
  */
 @SuppressWarnings("serial")
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "user_id",
-    "work_date_id" }) )
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "user_id", "work_date_id" }))
 public class Vote implements Serializable {
 
     @Id

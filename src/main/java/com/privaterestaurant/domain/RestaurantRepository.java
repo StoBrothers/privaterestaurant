@@ -4,6 +4,13 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+/**
+ * Restaurant repository.
+ * 
+ * @author Sergey Stotskiy
+ *
+ * @param <T>
+ */
 public interface RestaurantRepository<T extends Restaurant>
     extends JpaRepository<T, Long> {
 

@@ -41,6 +41,14 @@ public class UserInit extends AbstractInit {
         create("app2", "app2@privaterestaurant.com", userPass, false);
     }
 
+    /**
+     * Create one User
+     * 
+     * @param logonName
+     * @param email
+     * @param passwordHash
+     * @param adminRules
+     */
     private void create(String logonName, String email, String passwordHash,
         Boolean adminRules) {
         User user = new User();

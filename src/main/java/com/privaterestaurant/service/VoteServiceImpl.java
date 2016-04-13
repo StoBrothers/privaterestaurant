@@ -20,20 +20,18 @@ import com.privaterestaurant.util.ApplicationProperties;
 
 /**
  * 
- * Vote service. User can change his restaurant vote for selected period.
- * Time period defined between  
- * ((0Hr of Selected date + plusHour) AND (0Hr of Selected date - minusHour))
+ * Vote service. User can change his restaurant vote for selected period. Time period defined
+ * between ((0Hr of Selected date + plusHour) AND (0Hr of Selected date - minusHour))
  * 
- * Example:
- * plusHour is value of hours after 0PM 0 Hrs + 11 Hrs = 11AM. 11AM - is end time for update vote.
- * minusHour is value of hours before 0PM 0 Hrs - 1 Hrs = 11PM 11PM 11PM of previous day is start time for
- * update vote.
+ * Example: plusHour is value of hours after 0PM 0 Hrs + 11 Hrs = 11AM. 11AM - is end time for
+ * update vote. minusHour is value of hours before 0PM 0 Hrs - 1 Hrs = 11PM 11PM 11PM of previous
+ * day is start time for update vote.
  * 
  * @author Sergey Stotskiy
-**/
+ **/
 @Service("voteService")
-public class VoteServiceImpl implements VoteService<Vote> {
-    
+public class VoteServiceImpl implements VoteService {
+
     private static final Logger logger = LoggerFactory.getLogger(VoteServiceImpl.class);
 
     @Autowired
@@ -43,7 +41,8 @@ public class VoteServiceImpl implements VoteService<Vote> {
     @Transactional
     public Vote addVote(User user, Restaurant restaurant, WorkDate workDate) {
         Vote vote = null;
-        if (!isChange(ApplicationProperties.getPlusHour(), ApplicationProperties.getMinusHour(), workDate)) {
+        if (!isChange(ApplicationProperties.getPlusHour(),
+            ApplicationProperties.getMinusHour(), workDate)) {
             return vote;
         }
         Optional<Vote> valueVote = voteRepository.findByUserIdAndWorkDateId(user.getId(),
@@ -61,7 +60,6 @@ public class VoteServiceImpl implements VoteService<Vote> {
         }
         return vote;
     }
-
 
     /**
      * Check for needs update vote in selected time period.
@@ -87,10 +85,11 @@ public class VoteServiceImpl implements VoteService<Vote> {
             logger.info("Vote can be change");
             return true;
         }
-        logger.info("Vote can't change because time of voting for this workDay is ended.");
+        logger
+            .info("Vote can't change because time of voting for this workDay is ended.");
         return false;
     }
-    
+
     public List<Vote> findAllVotes() {
         return voteRepository.findAll();
     }

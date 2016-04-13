@@ -14,8 +14,7 @@ import com.privaterestaurant.domain.WorkDate;
 import com.privaterestaurant.domain.WorkDateRepository;
 
 /**
- * Create menu from 3 dishes for 3 days for all restaurants.
- * It's test data.
+ * Create menu from 3 dishes for 3 days for all restaurants. It's test data.
  *
  * @author Sergey Stotskiy
  *
@@ -46,6 +45,14 @@ public class DishesInit extends AbstractInit {
         }
     }
 
+    /**
+     * Create one dish
+     * 
+     * @param restaurant
+     * @param workDate
+     * @param name
+     * @param price
+     */
     private void create(Restaurant restaurant, WorkDate workDate, String name,
         Double price) {
         Dishe dishe = new Dishe();

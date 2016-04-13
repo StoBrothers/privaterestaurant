@@ -6,6 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+/**
+ * Vote repository.
+ * 
+ * @author Sergey Stotskiy
+ *
+ * @param <T>
+ */
 public interface VoteRepository<T extends Vote> extends JpaRepository<T, Long> {
 
     @Query("select  t from #{#entityName} t " + " where t.user.id  = :userId "

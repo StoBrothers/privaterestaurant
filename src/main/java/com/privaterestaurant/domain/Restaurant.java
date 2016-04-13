@@ -8,6 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Restaurant entity.
+ * 
+ * @author Sergey Stotskiy
+ *
+ */
+
 @SuppressWarnings("serial")
 @Entity
 public class Restaurant implements Serializable {
@@ -35,11 +42,10 @@ public class Restaurant implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     @Override
     public String toString() {
         return "Restaurant [id=" + id + ", name=" + name + "]";
     }
-
 
 }

@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 /**
  * Dishes entity for filling restaurant menu per selected date.
  * 
+ * @author Sergey Stotskiy
  */
 @SuppressWarnings("serial")
 @Entity

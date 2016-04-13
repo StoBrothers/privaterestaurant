@@ -1,4 +1,4 @@
-package com.privaterestaurant.domain;
+package com.privaterestaurant.security;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.google.common.collect.Sets;
-import com.privaterestaurant.security.Permission;
 
 /**
  * All roles in project with permissions.
@@ -34,6 +33,8 @@ public enum Role {
         Stream.concat(
             Permission.APP_COMMON.stream(),
             Arrays.asList(
+                Permission.VOTES_INFO,
+                Permission.VOTES_CREATE,
                 Permission.REF_MENU
             ).stream())
         .collect(Collectors.toList()));

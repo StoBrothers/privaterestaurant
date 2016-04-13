@@ -5,6 +5,12 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+/**
+ * Dishe repository.
+ * 
+ * @author Sergey Stotskiy
+ *
+ */
 public interface DisheRepository extends JpaRepository<Dishe, Long> {
 
     Optional<Dishe> findOneById(Long id);
