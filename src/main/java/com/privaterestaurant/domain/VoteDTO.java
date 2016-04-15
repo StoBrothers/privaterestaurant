@@ -2,21 +2,13 @@ package com.privaterestaurant.domain;
 
 import java.util.Date;
 
-
 /**
- * Use DTO Object for hide User security property (password and any).  
- *  
+ * Use DTO Object for hide User security property (password and others).
+ * 
  * @author Sergey Stotskiy
  *
  */
 public class VoteDTO {
-    
-    public VoteDTO(Vote vote) {
-      this.id = vote.getId();
-      this.userName = vote.getUser().getFullName();
-      this.restaurantName = vote.getRestaurant().getName();
-      this.workDate = vote.getWorkDate().getDate();
-    }
 
     private long id;
 
@@ -26,6 +18,12 @@ public class VoteDTO {
 
     private Date workDate;
 
+    public VoteDTO(Vote vote) {
+        this.id = vote.getId();
+        this.userName = vote.getUser().getFullName();
+        this.restaurantName = vote.getRestaurant().getName();
+        this.workDate = vote.getWorkDate().getDate();
+    }
 
     public long getId() {
         return id;
@@ -58,7 +56,7 @@ public class VoteDTO {
     public void setWorkDate(Date workDate) {
         this.workDate = workDate;
     }
-    
+
     @Override
     public String toString() {
         return "VoteDTO [id=" + id + ", userName=" + userName + ", restaurantName="
