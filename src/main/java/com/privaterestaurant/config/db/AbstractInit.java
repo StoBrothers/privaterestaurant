@@ -22,7 +22,6 @@ public abstract class AbstractInit {
     private ModuleService moduleService;
 
     public AbstractInit() {
-        super();
     }
 
     abstract protected void init();

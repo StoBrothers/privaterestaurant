@@ -107,7 +107,6 @@ public class CustomErrorController implements ErrorController {
         List<Throwable> exceptions = new ArrayList<>();
         while (e != null) {
             exceptions.add(e);
-            e = e.getCause();
         }
         return exceptions;
     }

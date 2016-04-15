@@ -35,10 +35,10 @@ public class UserInit extends AbstractInit {
     protected void init() {
         String userPass = ApplicationProperties.isTestserver() ? PASS_TEST : PASS_DEMO;
 
-        create("admin", "admin@privaterestaurant.com", userPass, true);
+        create("admin", userPass, true);
         // -------------------
-        create("app1", "app1@privaterestaurant.com", userPass, false);
-        create("app2", "app2@privaterestaurant.com", userPass, false);
+        create("app1", userPass, false);
+        create("app2", userPass, false);
     }
 
     /**
@@ -49,8 +49,7 @@ public class UserInit extends AbstractInit {
      * @param passwordHash
      * @param adminRules
      */
-    private void create(String logonName, String email, String passwordHash,
-        Boolean adminRules) {
+    private void create(String logonName, String passwordHash, Boolean adminRules) {
         User user = new User();
         user.setLogonName(logonName);
         user.setPasswordHash(passwordHash);
