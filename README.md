@@ -121,3 +121,10 @@ File example_out.txt contains result of execution test.bat.
 
 Entity uml diagramm in file entity_uml.jpg
 
+
+Codacy project metrics
+--------------------------
+
+https://api.codacy.com/project/badge/grade/313d3ab611d149d892036adefdaf2a93)](https://www.codacy.com/app/DjSmile/privaterestaurant
+
+
