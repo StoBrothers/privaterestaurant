@@ -122,17 +122,4 @@ File example_out.txt contains result of execution test.bat.
 Entity uml diagramm in file entity_uml.jpg
 
 
-Codacy project metrics
---------------------------
-
-https://api.codacy.com/project/badge/grade/313d3ab611d149d892036adefdaf2a93)](https://www.codacy.com/app/DjSmile/privaterestaurant
-[![Codacy Badge](https://api.codacy.com/project/badge/grade/313d3ab611d149d892036adefdaf2a93)](https://www.codacy.com/app/DjSmile/privaterestaurant)
-
-
-<a href="https://www.codacy.com/app/DjSmile/privaterestaurant"><img src="https://api.codacy.com/project/badge/grade/313d3ab611d149d892036adefdaf2a93"/></a>
-!https://api.codacy.com/project/badge/grade/313d3ab611d149d892036adefdaf2a93!:https://www.codacy.com/app/DjSmile/privaterestaurant   text
-{<img src="https://api.codacy.com/project/badge/grade/313d3ab611d149d892036adefdaf2a93" alt="Codacy code quality" />}[https://www.codacy.com/app/DjSmile/privaterestaurant]
-image:https://api.codacy.com/project/badge/grade/313d3ab611d149d892036adefdaf2a93["Codacy code quality", link="https://www.codacy.com/app/DjSmile/privaterestaurant"] ascii
-
-
 
