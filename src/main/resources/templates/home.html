@@ -12,7 +12,7 @@
 </div>
 
 <div id="sections" sec:authorize="isAuthenticated()">
-	<th:block th:with="userIsAdmin=(${currentUser.getRoles().contains(T(com.privaterestaurant.domain.Role).ADMIN)})">
+	<th:block th:with="userIsAdmin=(${currentUser.getRoles().contains(T(com.privaterestaurant.security.Role).ADMIN)})">
     <a th:href="@{/map/}" sec:authorize-url="/map/"
 	   class="wow fadeInLeft section map" data-wow-delay="0.3s">
 		Monitoring<br/>and Manage</a><a
